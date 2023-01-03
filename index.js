@@ -1,6 +1,34 @@
+/* 
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  // 1 step
+  const seenNumbers = {};
+  for (const number of array) {
+    // n steps
+    const complement = target - number;
+    // n steps
+    if (seenNumbers[complement]) return true;
+    // n steps
+    seenNumbers[number] = true;
+  }
+  // 1 step
+  return false;
+} 
+*/
+
+function hasTargetSum(array, target) {
+  const seenNumbers = new Set(); // initialize an empty Set
+  for (const number of array) {
+    const complement = target - number;
+
+    // .has returns true if the Set includes the complement
+    if (seenNumbers.has(complement)) return true;
+
+    // .add adds the number to the Set
+    seenNumbers.add(number);
+  }
+  return false;
 }
+
 
 /* 
   Write the Big O time complexity of your function here
